@@ -1,0 +1,67 @@
+# Commands to run on startup
+[ -d /srv/www/<REPLACE ME> ] && cd /srv/www/<REPLACE ME>  # for my <REPLACE ME> VM
+
+
+# ALIASES
+alias grep="grep --color=auto"
+alias ll="ls -alF" # -a show hidden; -l show long desc; -F show / or *
+
+alias ss="stopwatch_start"
+alias st="stopwatch_stop"
+
+alias n="nano"
+alias et="emacs -nw" # run emacs in terminal; note that the function 'e' runs emacs in the background
+
+alias nb="nano ~/.bash_profile"
+alias rb="exec bash -l" # replace w/new bash instance (-l is login shell)
+
+alias gs="git status"
+alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
+
+alias rs="bin/rails server"  # to be run inside the work app, which has a bin folder
+alias rc="bin/rails console" # ditto
+
+alias rce-em='rubocop --except Style/EmptyMethod' # accommodate method wishlists in Rubocop
+alias rco="rubocop --format offenses"
+alias rcfixit='rubocop -a' # let Rubocop auto-fix files
+
+
+# FUNCTIONS
+stopwatch_start () {  # aliased as ss
+  export STOPWATCH_START_TIME=$(date +%s)
+}
+
+stopwatch_stop () {  # aliased as st
+  if [ $STOPWATCH_START_TIME ]; then
+    echo $(($(date +%s ) -$STOPWATCH_START_TIME))
+    unset STOPWATCH_START_TIME
+  fi
+}
+
+e() {
+  emacs "$1" & # run emacs in background
+}
+
+grep. ()
+{
+  grep -r $1 .
+}
+
+hist () {
+  history | tail -$1
+}
+
+mkcd ()
+{
+  mkdir $1 && cd $1
+}
+
+cdls ()
+{
+  cd $1 ; ls ;
+}
+
+to ()
+{
+  touch $1 && open $1
+}
