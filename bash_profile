@@ -85,7 +85,13 @@ to ()
   touch $1 && open $1
 }
 
-subdir_lines () {  # function I made to help myself learn shell commands
+tn ()  # the easiest way to share notes between my personal (/Users/adamisom) and work (/Users/work) accounts
+{
+  echo "$1" >> /Users/Shared/tempNote.txt
+}
+
+# function I made to help myself learn shell commands
+subdir_lines () {  
   if [ $1 ]; then path=$1  
   else path='.'  # if no path passed in, uses current dir
   fi
