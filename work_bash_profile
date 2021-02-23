@@ -1,3 +1,6 @@
+# THIS SHOULD ACTUALLY BE APPENDED TO .BASHRC (in Linux machines)
+# I'll need to exit the 'vagrant ssh' and re-ssh for it to take effect
+
 # Commands to run on startup
 [ -d /srv/www/<REPLACE ME> ] && cd /srv/www/<REPLACE ME>  # for my <REPLACE ME> VM
 
@@ -11,9 +14,6 @@ alias st="stopwatch_stop"
 
 alias n="nano"
 alias et="emacs -nw" # run emacs in terminal; note that the function 'e' runs emacs in the background
-
-alias nb="nano ~/.bash_profile"
-alias rb="exec bash -l" # replace w/new bash instance (-l is login shell)
 
 alias gs="git status"
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
